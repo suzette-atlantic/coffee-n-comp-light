@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coffee &amp; Compliance, by Atlantic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* Atlantic brand */
+    --deep-blue:#374A9E;
+    --teal:#3AC4DE;
+    --grad:linear-gradient(90deg,#374A9E 0%,#3AC4DE 100%); /* 0deg horizontal, 50/50 */
+    --grad-soft:linear-gradient(90deg,rgba(55,74,158,.10) 0%,rgba(58,196,222,.10) 100%);
+
+    /* neutrals */
+    --ink:#0f1626;
+    --ink-2:#27324b;
+    --muted:#5c6781;
+    --muted-2:#8a93a8;
+    --line:#e7ecf4;
+    --bg:#ffffff;
+    --bg-soft:#f5f8fc;
+    --bg-tint:#eef4fb;
+
+    --radius:18px;
+    --maxw:1200px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Figtree',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .grad-text{
+    background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+
+  /* ============ BUTTONS ============ */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-family:'Figtree',sans-serif;font-weight:600;font-size:14.5px;
+    padding:11px 22px;border-radius:10px;border:none;cursor:pointer;
+    transition:transform .15s ease, box-shadow .2s ease, opacity .2s;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 10px 24px rgba(55,74,158,.28)}
+  .btn-outline{background:#fff;color:var(--deep-blue);border:1.5px solid #d7deec}
+  .btn-outline:hover{border-color:var(--teal)}
+  .btn-lg{padding:15px 30px;font-size:16px;border-radius:12px}
+
+  /* ============ HEADER ============ */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:34px;width:auto}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{color:var(--ink-2);font-size:14.5px;font-weight:500;display:flex;align-items:center;gap:6px;transition:color .2s}
+  .nav-links a:hover{color:var(--deep-blue)}
+  .nav-links .caret{width:7px;height:7px;border-right:2px solid #98a2ba;border-bottom:2px solid #98a2ba;transform:rotate(45deg);margin-top:-3px}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .nav-right .login{color:var(--ink-2);font-size:14.5px;font-weight:600}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;padding:92px 0 78px;overflow:hidden;background:var(--bg)}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(760px 460px at 82% -6%, rgba(58,196,222,.16), transparent 62%),
+      radial-gradient(620px 460px at 6% 4%, rgba(55,74,158,.12), transparent 60%);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    background:var(--bg-tint);border:1px solid #dbe6f5;
+    color:var(--deep-blue);font-weight:600;font-size:13px;letter-spacing:.03em;text-transform:uppercase;
+    padding:7px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--grad)}
+  .hero h1{font-size:62px;line-height:1.04;font-weight:800;letter-spacing:-.025em;margin-bottom:20px;color:var(--ink)}
+  .hero p.sub{font-size:19px;color:var(--muted);max-width:540px;margin-bottom:30px}
+  .signup{
+    display:flex;gap:10px;background:#fff;border:1px solid #dbe2ee;
+    padding:8px;border-radius:14px;max-width:480px;box-shadow:0 12px 34px rgba(24,40,90,.08);
+  }
+  .signup input{
+    flex:1;background:transparent;border:none;outline:none;color:var(--ink);font-size:15px;padding:0 14px;font-family:'Figtree',sans-serif;
+  }
+  .signup input::placeholder{color:var(--muted-2)}
+  .signup .btn{white-space:nowrap}
+  .hero .fineprint{margin-top:14px;font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .stars{color:var(--teal);letter-spacing:1px}
+
+  /* hero visual */
+  .hero-visual{position:relative}
+  .hero-card{
+    border-radius:24px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:0 36px 80px rgba(24,40,90,.18);position:relative;
+  }
+  .hero-card img{width:100%;height:480px;object-fit:cover}
+  .hero-card .overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(15,22,38,0) 42%,rgba(15,22,38,.82) 100%);
+  }
+  .hero-tag{position:absolute;left:18px;bottom:18px;right:18px;display:flex;align-items:center;gap:12px}
+  .cup{width:46px;height:46px;border-radius:13px;background:var(--grad);display:grid;place-items:center;flex:none;box-shadow:0 10px 22px rgba(55,74,158,.4)}
+  .cup svg{width:25px;height:25px}
+  .hero-tag b{display:block;font-size:15px;color:#fff;font-weight:700}
+  .hero-tag span{font-size:13px;color:#d6ddec}
+  .float-badge{
+    position:absolute;top:-18px;right:-14px;background:#fff;border:1px solid var(--line);
+    border-radius:14px;padding:12px 18px;display:flex;align-items:center;gap:10px;
+    box-shadow:0 18px 40px rgba(24,40,90,.16);
+  }
+  .float-badge .n{font-weight:800;font-size:20px}
+  .float-badge .l{font-size:11.5px;color:var(--muted);line-height:1.2}
+
+  /* ============ TRUST STRIP ============ */
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-soft)}
+  .trust .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;padding-top:26px;padding-bottom:26px}
+  .trust .label{font-size:13px;color:var(--muted-2);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+  .trust-tags{display:flex;gap:22px;flex-wrap:wrap}
+  .trust-tag{display:flex;align-items:center;gap:8px;color:var(--ink-2);font-weight:600;font-size:14px}
+  .trust-tag svg{width:18px;height:18px}
+
+  /* ============ SECTION BASE ============ */
+  .section-pad{padding:92px 0}
+  .sec-head{max-width:680px;margin:0 auto 54px;text-align:center}
+  .kicker{color:var(--teal);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;display:block}
+  .kicker.blue{color:var(--deep-blue)}
+  .sec-head h2{font-size:42px;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--ink)}
+  .sec-head p{color:var(--muted);font-size:18px}
+
+  /* ============ WHAT IS ============ */
+  .what{background:var(--bg-soft);border-top:1px solid var(--line)}
+  .what-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:54px;align-items:center}
+  .what-grid h2{font-size:40px;font-weight:800;letter-spacing:-.02em;line-height:1.12;margin-bottom:20px;color:var(--ink)}
+  .what-grid p{color:var(--muted);font-size:17px;margin-bottom:18px}
+  .what-list{list-style:none;margin-top:26px;display:grid;gap:18px}
+  .what-list li{display:flex;gap:14px;align-items:flex-start}
+  .what-list .ic{width:36px;height:36px;border-radius:10px;background:var(--grad);display:grid;place-items:center;flex:none;box-shadow:0 8px 18px rgba(55,74,158,.22)}
+  .what-list .ic svg{width:19px;height:19px}
+  .what-list b{font-weight:700;font-size:15.5px;color:var(--ink)}
+  .what-list span{display:block;color:var(--muted);font-size:14.5px}
+  .what-img{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px rgba(24,40,90,.16)}
+  .what-img img{width:100%;height:520px;object-fit:cover}
+  .what-img .ribbon{
+    position:absolute;left:0;top:0;height:6px;width:100%;background:var(--grad);
+  }
+
+  /* ============ WHAT'S INSIDE (cards) ============ */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px;transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-5px);border-color:#cfe6f3;box-shadow:0 24px 50px rgba(24,40,90,.12)}
+  .card .ci{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;background:var(--grad);box-shadow:0 12px 24px rgba(55,74,158,.24)}
+  .card .ci svg{width:26px;height:26px}
+  .card h3{font-size:19px;font-weight:700;margin-bottom:10px;color:var(--ink)}
+  .card p{color:var(--muted);font-size:15px}
+
+  /* ============ SAFETY FAIL ============ */
+  .fail{background:#fff;border-top:1px solid var(--line)}
+  .fail-banner{
+    display:inline-flex;align-items:center;gap:10px;background:var(--bg-tint);
+    border:1px solid #d7e6f6;color:var(--deep-blue);font-weight:700;font-size:13px;
+    letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:999px;margin-bottom:16px;
+  }
+  .fail-banner .pulse{width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(58,196,222,.6);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(58,196,222,.5)}70%{box-shadow:0 0 0 12px rgba(58,196,222,0)}100%{box-shadow:0 0 0 0 rgba(58,196,222,0)}}
+  .fail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px}
+  .clip{
+    position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
+    aspect-ratio:16/11;cursor:pointer;transition:transform .2s ease, box-shadow .2s;
+  }
+  .clip:hover{transform:translateY(-4px);box-shadow:0 24px 50px rgba(24,40,90,.18)}
+  .clip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .clip .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,22,38,.05) 26%,rgba(15,22,38,.88) 100%)}
+  .clip .play{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.22);
+    backdrop-filter:blur(6px);border:1.5px solid rgba(255,255,255,.7);display:grid;place-items:center;
+    transition:background .2s,transform .2s;
+  }
+  .clip:hover .play{background:var(--grad);border-color:transparent;transform:translate(-50%,-50%) scale(1.08)}
+  .clip .play svg{width:24px;height:24px;margin-left:3px}
+  .clip .meta{position:absolute;left:16px;right:16px;bottom:14px}
+  .clip .meta .pill{display:inline-block;background:var(--grad);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+  .clip .meta b{display:block;font-size:15.5px;line-height:1.25;color:#fff;font-weight:700}
+  .clip .meta span{font-size:12.5px;color:#d6ddec}
+  .fail-note{text-align:center;margin-top:34px;color:var(--muted);font-size:14.5px}
+
+  /* ============ STATS ============ */
+  .stats{border-top:1px solid var(--line);background:var(--bg-soft)}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  .stat .n{font-weight:800;font-size:46px;line-height:1;margin-bottom:8px}
+  .stat .l{color:var(--muted);font-size:14.5px}
+
+  /* ============ FINAL CTA (gradient band) ============ */
+  .cta{padding:90px 0}
+  .cta-box{
+    position:relative;overflow:hidden;border-radius:28px;
+    background:var(--grad);
+    padding:66px 56px;text-align:center;box-shadow:0 30px 70px rgba(55,74,158,.3);
+  }
+  .cta-box .eyebrow{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35);color:#fff}
+  .cta-box .eyebrow .dot{background:#fff}
+  .cta-box h2{font-size:44px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;line-height:1.08;color:#fff}
+  .cta-box p{color:rgba(255,255,255,.92);font-size:18px;max-width:560px;margin:0 auto 30px}
+  .cta-box .signup{margin:0 auto;box-shadow:0 18px 44px rgba(15,22,38,.22)}
+  .cta-box .signup .btn-primary{background:#fff;color:var(--deep-blue);box-shadow:none}
+  .cta-box .wave{position:absolute;right:-30px;bottom:-40px;width:260px;opacity:.14;pointer-events:none;filter:brightness(0) invert(1)}
+
+  /* ============ FOOTER ============ */
+  .site-footer{background:#fff;border-top:1px solid var(--line);padding:60px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--line)}
+  .foot-brand img{height:34px;margin-bottom:18px}
+  .foot-brand p{color:var(--muted);font-size:14.5px;max-width:300px}
+  .foot-soc{display:flex;gap:12px;margin-top:20px}
+  .foot-soc a{width:38px;height:38px;border-radius:10px;background:var(--bg-soft);border:1px solid var(--line);display:grid;place-items:center;transition:.2s}
+  .foot-soc a:hover{background:var(--grad);border-color:transparent}
+  .foot-soc a:hover svg{fill:#fff}
+  .foot-soc svg{width:17px;height:17px;fill:#5c6781;transition:.2s}
+  .foot-col h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:16px;font-weight:700}
+  .foot-col a{display:block;color:var(--muted);font-size:14.5px;margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:var(--deep-blue)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:26px;color:var(--muted-2);font-size:13.5px}
+  .foot-bottom .links{display:flex;gap:22px}
+  .foot-bottom a:hover{color:var(--deep-blue)}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:980px){
+    .hero-grid,.what-grid{grid-template-columns:1fr;gap:40px}
+    .cards,.fail-grid{grid-template-columns:1fr 1fr}
+    .stats-grid{grid-template-columns:1fr 1fr;gap:36px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .hero h1{font-size:48px}
+    .nav-links{display:none}
+  }
+  @media (max-width:640px){
+    .cards,.fail-grid,.stats-grid,.foot-grid{grid-template-columns:1fr}
+    .hero h1{font-size:38px}
+    .sec-head h2,.what-grid h2,.cta-box h2{font-size:30px}
+    .signup{flex-direction:column}
+    .signup .btn{width:100%}
+    .cta-box{padding:44px 24px}
+    .nav-right .login{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER (Atlantic site header) ============ -->
+<header class="site-header">
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="atlantic-logo.png" alt="Atlantic" />
+    </div>
+    <nav class="nav-links">
+      <a href="#">WAVE LMS</a>
+      <a href="#">Solutions <i class="caret"></i></a>
+      <a href="#">Resources <i class="caret"></i></a>
+      <a href="#">Pricing</a>
+      <a href="#">Company <i class="caret"></i></a>
+    </nav>
+    <div class="nav-right">
+      <a href="#" class="login">Log In</a>
+      <a href="#signup" class="btn btn-primary">Request a Demo</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span> A Newsletter by Atlantic</span>
+      <h1>Your daily cup of <span class="grad-text">Coffee &amp; Compliance</span></h1>
+      <p class="sub">Safety &amp; compliance training news, EHS software insights, and the occasional jaw-dropping safety fail, all in a quick, easy read. Pour a cup. Stay compliant.</p>
+      <form class="signup" onsubmit="return subscribe(event)">
+        <input type="email" placeholder="Enter your work email" required />
+        <button type="submit" class="btn btn-primary">Subscribe Free</button>
+      </form>
+      <div class="fineprint">
+        <span class="stars">★★★★★</span> Loved by 12,000+ EHS &amp; safety pros. Free forever. Unsubscribe anytime.
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="float-badge">
+        <div>
+          <div class="n grad-text">5&nbsp;min</div>
+          <div class="l">read,<br/>tops</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="hero-scaffolding.jpg" alt="Worker in safety harness on scaffolding" />
+        <div class="overlay"></div>
+        <div class="hero-tag">
+          <div class="cup">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 8h13v5a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Z" stroke="#fff" stroke-width="1.8"/><path d="M16 9h2.5a2.5 2.5 0 0 1 0 5H16" stroke="#fff" stroke-width="1.8"/><path d="M6.5 2.5c-.6 1 .6 1.8 0 2.8M10 2.5c-.6 1 .6 1.8 0 2.8" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <b>This week's brew</b>
+            <span>OSHA's new heat rule, EHS software trends &amp; a forklift fail you have to see.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust">
+  <div class="wrap">
+    <span class="label">Built for the people who keep work safe</span>
+    <div class="trust-tags">
+      <span class="trust-tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3Z" stroke="#3AC4DE" stroke-width="1.8"/></svg> Manufacturing</span>
+      <span class="trust-tag"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V8l7-4 7 4v13" stroke="#3AC4DE" stroke-width="1.8"/></svg> Construction</span>
+      <span class="trust-tag"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v12H4zM4 7l3-3h10l3 3" stroke="#3AC4DE" stroke-width="1.8"/></svg> Logistics</span>
+      <span class="trust-tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8l7-5 7 5" stroke="#3AC4DE" stroke-width="1.8"/></svg> Energy</span>
+      <span class="trust-tag"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10l8-6 8 6v10" stroke="#3AC4DE" stroke-width="1.8"/><path d="M9 20v-6h6v6" stroke="#3AC4DE" stroke-width="1.8"/></svg> Healthcare</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WHAT IS C&C ============ -->
+<section class="what section-pad">
+  <div class="wrap what-grid">
+    <div class="what-img">
+      <span class="ribbon"></span>
+      <img src="warehouse-team.jpg" alt="Two safety professionals reviewing a tablet in a warehouse" />
+    </div>
+    <div>
+      <span class="kicker blue">What is Coffee &amp; Compliance?</span>
+      <h2>The safety brief worth waking up for.</h2>
+      <p>Coffee &amp; Compliance is Atlantic's free newsletter for EHS leaders, safety managers, and compliance teams. We sift through regulation updates, training trends, and EHS software news so you don't have to, then serve it up in a punchy, easy-to-read format.</p>
+      <p>No jargon. No fluff. Just what changed, why it matters, and what to do about it, with a smile.</p>
+      <ul class="what-list">
+        <li>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div><b>Curated, not cluttered</b><span>The headlines that actually affect your workplace, hand-picked by people who live this stuff.</span></div>
+        </li>
+        <li>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 8v5l3 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.8"/></svg></span>
+          <div><b>A 5-minute read</b><span>Skimmable, scannable, and built to fit between your first and second cup.</span></div>
+        </li>
+        <li>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H4z" stroke="#fff" stroke-width="1.8"/><path d="M8 20h8M12 16v4" stroke="#fff" stroke-width="1.8"/></svg></span>
+          <div><b>Powered by EHS expertise</b><span>From the team behind Atlantic WAVE LMS, the all-in-one safety, training &amp; compliance platform.</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INSIDE ============ -->
+<section class="section-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">In every issue</span>
+      <h2>A little bit of everything that keeps you sharp.</h2>
+      <p>Each edition blends the news you need with the moments that keep safety human.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ci"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4z" stroke="#fff" stroke-width="1.8"/><path d="M8 9h8M8 13h8M8 17h5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Safety &amp; Compliance News</h3>
+        <p>OSHA updates, regulation changes, and industry headlines, translated into plain English and clear next steps.</p>
+      </div>
+      <div class="card">
+        <div class="ci"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="1.5" stroke="#fff" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><path d="M7 12l3-3 2 2 4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>EHS Software Insights</h3>
+        <p>Reviews, comparisons, and tips on the tools that streamline training, recordkeeping, and incident management.</p>
+      </div>
+      <div class="card">
+        <div class="ci"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9-2.6.9-5.5-4-3.9 5.5-.8L12 3Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>Training Tips &amp; Best Practices</h3>
+        <p>Bite-sized ideas to boost engagement, cut incidents, and build a culture where safety actually sticks.</p>
+      </div>
+      <div class="card">
+        <div class="ci"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 2 20h20L12 3Z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4M12 17h.01" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Safety Fails 🎥</h3>
+        <p>Real (and cringe-worthy) clips of what <em>not</em> to do, because nothing teaches a lesson like watching it go wrong.</p>
+      </div>
+      <div class="card">
+        <div class="ci"><svg viewBox="0 0 24 24" fill="none"><path d="M3 17l5-5 4 4 8-8" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 8h5v5" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Trends &amp; Data</h3>
+        <p>The numbers behind workplace safety: incident stats, benchmarks, and what's shifting across your industry.</p>
+      </div>
+      <div class="card">
+        <div class="ci"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8h13v5a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Z" stroke="#fff" stroke-width="1.8"/><path d="M16 9h2.5a2.5 2.5 0 0 1 0 5H16" stroke="#fff" stroke-width="1.8"/></svg></div>
+        <h3>The Daily Grind</h3>
+        <p>A quick, friendly note from the Atlantic team: a quote, a laugh, or a reminder to take that coffee break.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAFETY FAIL ============ -->
+<section class="fail section-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="fail-banner"><span class="pulse"></span> Fan Favorite</span>
+      <h2>The Safety Fail of the Week.</h2>
+      <p>An occasional segment people genuinely look forward to. Real near-misses and "how did that happen?!" moments, with the takeaway that could save someone's day.</p>
+    </div>
+    <div class="fail-grid">
+      <div class="clip">
+        <img src="hard-hats.jpg" alt="Workers holding hard hats" />
+        <div class="shade"></div>
+        <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="meta"><span class="pill">Safety Fail</span><b>The "I'll Just Skip the Harness" Guy</b><span>2:14 · PPE gone wrong</span></div>
+      </div>
+      <div class="clip">
+        <img src="water-break.jpg" alt="Workers taking a water break" />
+        <div class="shade"></div>
+        <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="meta"><span class="pill">Safety Fail</span><b>Forklift vs. The Loading Dock</b><span>1:38 · Warehouse near-miss</span></div>
+      </div>
+      <div class="clip">
+        <img src="heat-stress.jpg" alt="Worker overheating without proper breaks" />
+        <div class="shade"></div>
+        <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="meta"><span class="pill">Safety Fail</span><b>Heat Stress &amp; the Missing Break</b><span>2:51 · Why hydration rules exist</span></div>
+      </div>
+    </div>
+    <p class="fail-note">Each clip ends with a quick "what went wrong &amp; how to fix it", so the laugh comes with a lesson.</p>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats section-pad">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="n grad-text">12,000+</div><div class="l">Subscribers &amp; counting</div></div>
+    <div class="stat"><div class="n grad-text">5&nbsp;min</div><div class="l">Average read time</div></div>
+    <div class="stat"><div class="n grad-text">48%</div><div class="l">Average open rate</div></div>
+    <div class="stat"><div class="n grad-text">100%</div><div class="l">Free, forever</div></div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="cta" id="signup">
+  <div class="wrap">
+    <div class="cta-box">
+      <img src="atlantic-wave.png" alt="" class="wave" />
+      <span class="eyebrow"><span class="dot"></span> Free · No spam · Unsubscribe anytime</span>
+      <h2>Ready to make compliance<br/>your favorite part of the morning?</h2>
+      <p>Join thousands of safety &amp; EHS pros who start their day with Coffee &amp; Compliance.</p>
+      <form class="signup" onsubmit="return subscribe(event)">
+        <input type="email" placeholder="Enter your work email" required />
+        <button type="submit" class="btn btn-primary">Subscribe Free</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER (Atlantic site footer) ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="atlantic-logo.png" alt="Atlantic" />
+        <p>Atlantic helps teams train, track, and comply, all in one wave. Coffee &amp; Compliance is our free newsletter for the people who keep work safe.</p>
+        <div class="foot-soc">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM0 8h5v16H0V8Zm7.5 0H12v2.2h.07c.63-1.2 2.17-2.46 4.47-2.46C21.4 7.74 24 10 24 14.6V24h-5v-8.3c0-2-.04-4.55-2.77-4.55-2.78 0-3.2 2.16-3.2 4.4V24h-5V8Z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.5 8.6L23.3 22h-6.9l-5.4-7-6.2 7H1.7l8-9.2L.9 2h7l4.9 6.5L18.9 2Zm-2.4 18h1.9L7.6 4H5.6l10.9 16Z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Platform</h4>
+        <a href="#">WAVE LMS</a>
+        <a href="#">LMS &amp; Training</a>
+        <a href="#">SDS Management</a>
+        <a href="#">Incident Management</a>
+        <a href="#">OSHA Recordkeeping</a>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <a href="#">Coffee &amp; Compliance</a>
+        <a href="#">Blog</a>
+        <a href="#">Guides</a>
+        <a href="#">Webinars</a>
+        <a href="#">Help Center</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+        <a href="#">Request a Demo</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Atlantic. Set Your Course.™ All rights reserved.</span>
+      <div class="links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function subscribe(e){
+    e.preventDefault();
+    var form = e.target;
+    var input = form.querySelector('input');
+    var btn = form.querySelector('button');
+    var original = btn.textContent;
+    btn.textContent = "You're in! ☕";
+    input.value = "";
+    input.placeholder = "Check your inbox to confirm";
+    setTimeout(function(){
+      btn.textContent = original;
+      input.placeholder = "Enter your work email";
+    }, 3500);
+    return false;
+  }
+</script>
+</body>
+</html>
