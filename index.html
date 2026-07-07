@@ -209,7 +209,7 @@
 
   /* ============ STATS ============ */
   .stats{border-top:1px solid var(--line);background:var(--bg-soft)}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
   .stat .n{font-weight:800;font-size:46px;line-height:1;margin-bottom:8px}
   .stat .l{color:var(--muted);font-size:14.5px}
 
@@ -281,8 +281,7 @@
       <a href="#">Company <i class="caret"></i></a>
     </nav>
     <div class="nav-right">
-      <a href="#" class="login">Log In</a>
-      <a href="#signup" class="btn btn-primary">Request a Demo</a>
+      <a href="#signup" class="btn btn-primary">Subscribe Now</a>
     </div>
   </div>
 </header>
@@ -294,9 +293,9 @@
       <span class="eyebrow"><span class="dot"></span> A Newsletter by Atlantic</span>
       <h1>Your daily cup of <span class="grad-text">Coffee &amp; Compliance</span></h1>
       <p class="sub">Safety &amp; compliance training news, EHS software insights, and the occasional jaw-dropping safety fail, all in a quick, easy read. Pour a cup. Stay compliant.</p>
-      <form class="signup" onsubmit="return subscribe(event)">
+      <form class="signup">
         <input type="email" placeholder="Enter your work email" required />
-        <button type="submit" class="btn btn-primary">Subscribe Free</button>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
       </form>
       <div class="fineprint">
         <span class="stars">★★★★★</span> Loved by 12,000+ EHS &amp; safety pros. Free forever. Unsubscribe anytime.
@@ -304,12 +303,6 @@
     </div>
 
     <div class="hero-visual">
-      <div class="float-badge">
-        <div>
-          <div class="n grad-text">5&nbsp;min</div>
-          <div class="l">read,<br/>tops</div>
-        </div>
-      </div>
       <div class="hero-card">
         <img src="hero-scaffolding.jpg" alt="Worker in safety harness on scaffolding" />
         <div class="overlay"></div>
@@ -319,7 +312,7 @@
           </div>
           <div>
             <b>This week's brew</b>
-            <span>OSHA's new heat rule, EHS software trends &amp; a forklift fail you have to see.</span>
+            <span>Leadership, summer safety gaps &amp; a free field checklist.</span>
           </div>
         </div>
       </div>
@@ -423,24 +416,24 @@
       <p>An occasional segment people genuinely look forward to. Real near-misses and "how did that happen?!" moments, with the takeaway that could save someone's day.</p>
     </div>
     <div class="fail-grid">
-      <div class="clip">
-        <img src="hard-hats.jpg" alt="Workers holding hard hats" />
+      <a class="clip" href="https://www.youtube.com/shorts/JZCVqcX2OS0" target="_blank" rel="noopener">
+        <img src="AdobeStock_2007299222.jpeg" alt="Heavy equipment operating at a quarry site" />
         <div class="shade"></div>
         <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="meta"><span class="pill">Safety Fail</span><b>The "I'll Just Skip the Harness" Guy</b><span>2:14 · PPE gone wrong</span></div>
-      </div>
-      <div class="clip">
-        <img src="water-break.jpg" alt="Workers taking a water break" />
+        <div class="meta"><span class="pill">Safety Fail</span><b>Heavy Equipment Operation Fails</b><span>Watch on YouTube →</span></div>
+      </a>
+      <a class="clip" href="https://www.youtube.com/watch?v=-qRcsFqj7VA" target="_blank" rel="noopener">
+        <img src="AdobeStock_2031042567.jpeg" alt="Worker on a roof using safety equipment and a tablet" />
         <div class="shade"></div>
         <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="meta"><span class="pill">Safety Fail</span><b>Forklift vs. The Loading Dock</b><span>1:38 · Warehouse near-miss</span></div>
-      </div>
-      <div class="clip">
-        <img src="heat-stress.jpg" alt="Worker overheating without proper breaks" />
+        <div class="meta"><span class="pill">Safety Fail</span><b>How to Use Roofing Safety Equipment</b><span>Watch on YouTube →</span></div>
+      </a>
+      <a class="clip" href="https://www.youtube.com/shorts/ElGc6e32ej0" target="_blank" rel="noopener">
+        <img src="AdobeStock_2080067526 (1).jpeg" alt="Outdoor worker in summer heat" />
         <div class="shade"></div>
         <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="meta"><span class="pill">Safety Fail</span><b>Heat Stress &amp; the Missing Break</b><span>2:51 · Why hydration rules exist</span></div>
-      </div>
+        <div class="meta"><span class="pill">Safety Fail</span><b>The Heat Is On! Work · Rest · Shade</b><span>Watch on YouTube →</span></div>
+      </a>
     </div>
     <p class="fail-note">Each clip ends with a quick "what went wrong &amp; how to fix it", so the laugh comes with a lesson.</p>
   </div>
@@ -450,7 +443,6 @@
 <section class="stats section-pad">
   <div class="wrap stats-grid">
     <div class="stat"><div class="n grad-text">12,000+</div><div class="l">Subscribers &amp; counting</div></div>
-    <div class="stat"><div class="n grad-text">5&nbsp;min</div><div class="l">Average read time</div></div>
     <div class="stat"><div class="n grad-text">48%</div><div class="l">Average open rate</div></div>
     <div class="stat"><div class="n grad-text">100%</div><div class="l">Free, forever</div></div>
   </div>
@@ -464,9 +456,9 @@
       <span class="eyebrow"><span class="dot"></span> Free · No spam · Unsubscribe anytime</span>
       <h2>Ready to make compliance<br/>your favorite part of the morning?</h2>
       <p>Join thousands of safety &amp; EHS pros who start their day with Coffee &amp; Compliance.</p>
-      <form class="signup" onsubmit="return subscribe(event)">
+      <form class="signup">
         <input type="email" placeholder="Enter your work email" required />
-        <button type="submit" class="btn btn-primary">Subscribe Free</button>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
       </form>
     </div>
   </div>
@@ -520,22 +512,7 @@
   </div>
 </footer>
 
-<script>
-  function subscribe(e){
-    e.preventDefault();
-    var form = e.target;
-    var input = form.querySelector('input');
-    var btn = form.querySelector('button');
-    var original = btn.textContent;
-    btn.textContent = "You're in! ☕";
-    input.value = "";
-    input.placeholder = "Check your inbox to confirm";
-    setTimeout(function(){
-      btn.textContent = original;
-      input.placeholder = "Enter your work email";
-    }, 3500);
-    return false;
-  }
-</script>
+<!-- Newsletter signup forms use the .signup markup above.
+     Dev: wire these <form class="signup"> elements to HubSpot (embed v2.js) or your ESP. -->
 </body>
 </html>
